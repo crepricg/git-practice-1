@@ -5,7 +5,7 @@ import webapp2
 class UserModel(ndb.Model):
     currentUser = ndb.StringProperty(required = True)  # OR not required, or repeated, depends on your app.
     some_text = ndb.TextProperty()
-    some_more_test = ndb.TextProperty()
+    some_more_text = ndb.TextProperty()
     
 class MainHandler(webapp2.RequestHandler):
     def get(self):
@@ -14,7 +14,7 @@ class MainHandler(webapp2.RequestHandler):
         if user:
             # If there was a user logged in, do stuff.
             self.response.write(user)
-            user = UserModel(currentUser = user.user_id(), text= "hey")
+            user = UserModel(currentUser = user.user_id(), some_text= "hey")
             user.put()
         else:
             # Send the user to a login page, then come back to this request, this
